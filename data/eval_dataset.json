@@ -1,0 +1,190 @@
+{
+  "_comment": "Each scenario = several chat SESSIONS in which the user shares facts, then QUESTIONS asked in a NEW session. A question is graded correct when, for EVERY group in expected_keywords, at least one keyword appears in the answer (case-insensitive). expected_fact is used by the optional LLM judge (--judge).",
+  "scenarios": [
+    {
+      "user_id": "eval_priya",
+      "sessions": [
+        [
+          "Hi! I'm Priya. I live in Toronto and I've been vegetarian for five years.",
+          "I'm training for my first half marathon in May, so I run four mornings a week."
+        ],
+        [
+          "Guess what, I just adopted a beagle puppy named Mochi!",
+          "My birthday is on March 12 and I absolutely love Thai food."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "Can you suggest a dinner idea for me tonight?",
+          "expected_keywords": [["vegetarian", "veggie", "tofu", "lentil", "chickpea", "plant-based", "meatless", "paneer", "tempeh", "bean", "vegan"]],
+          "expected_fact": "The user is vegetarian, so the suggestion must be meat-free (ideally Thai)."
+        },
+        {
+          "question": "What is my dog's name and what breed is it?",
+          "expected_keywords": [["mochi"], ["beagle"]],
+          "expected_fact": "The user's dog is a beagle named Mochi."
+        },
+        {
+          "question": "Which city do I live in?",
+          "expected_keywords": [["toronto"]],
+          "expected_fact": "The user lives in Toronto."
+        },
+        {
+          "question": "Any advice for my running this week?",
+          "expected_keywords": [["half marathon", "marathon", "race", "may"]],
+          "expected_fact": "The user is training for a half marathon in May."
+        }
+      ]
+    },
+    {
+      "user_id": "eval_marco",
+      "sessions": [
+        [
+          "Hey, I'm Marco. I work as a data analyst at a bank in Chicago.",
+          "I mostly use SQL and Excel at work, and I'm trying to learn Python on the side."
+        ],
+        [
+          "Big news: last month I moved to Denver for a new job as a product manager at a startup!",
+          "I still want to keep improving my Python skills though."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "Where do I live now?",
+          "expected_keywords": [["denver"]],
+          "expected_fact": "The user now lives in Denver (moved from Chicago)."
+        },
+        {
+          "question": "What is my current job title?",
+          "expected_keywords": [["product manager"]],
+          "expected_fact": "The user is now a product manager at a startup (previously a data analyst at a bank)."
+        },
+        {
+          "question": "Which programming language am I learning?",
+          "expected_keywords": [["python"]],
+          "expected_fact": "The user is learning Python."
+        }
+      ]
+    },
+    {
+      "user_id": "eval_yuki",
+      "sessions": [
+        [
+          "Hello, I'm Yuki from Osaka. I have a cat called Luna and I'm allergic to peanuts.",
+          "I play the piano and I'm preparing for a grade 8 exam in November."
+        ],
+        [
+          "Sad update: Luna passed away last week, so I don't have any pets right now.",
+          "To cheer myself up I booked a trip to Lisbon in October."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "Do I currently have any pets?",
+          "expected_keywords": [["no ", "not ", "don't", "do not", "passed away", "no longer", "sorry", "none"]],
+          "expected_fact": "The user currently has no pets; the cat Luna passed away."
+        },
+        {
+          "question": "Is there any food I need to avoid?",
+          "expected_keywords": [["peanut"]],
+          "expected_fact": "The user is allergic to peanuts."
+        },
+        {
+          "question": "Where am I travelling to and when?",
+          "expected_keywords": [["lisbon"], ["october"]],
+          "expected_fact": "The user is travelling to Lisbon in October."
+        }
+      ]
+    },
+    {
+      "user_id": "eval_fatima",
+      "sessions": [
+        [
+          "Hi, I'm Fatima, a nurse in Dublin. I work night shifts, so I sleep during the day.",
+          "I prefer short answers with bullet points, I don't have time for long texts."
+        ],
+        [
+          "I'm learning Spanish because my partner's family is from Madrid.",
+          "We're planning to visit them in December for two weeks."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "Which language am I learning and why?",
+          "expected_keywords": [["spanish"], ["partner", "family", "madrid"]],
+          "expected_fact": "The user is learning Spanish because their partner's family is from Madrid."
+        },
+        {
+          "question": "When am I visiting my partner's family?",
+          "expected_keywords": [["december"]],
+          "expected_fact": "The user visits the partner's family in Madrid in December."
+        },
+        {
+          "question": "What do I do for a living and where?",
+          "expected_keywords": [["nurse"], ["dublin"]],
+          "expected_fact": "The user is a nurse in Dublin."
+        }
+      ]
+    },
+    {
+      "user_id": "eval_diego",
+      "sessions": [
+        [
+          "I'm Diego. I'm a backend engineer and my team uses Go and PostgreSQL.",
+          "I go bouldering twice a week and I'm lactose intolerant."
+        ],
+        [
+          "My daughter Ava turns six on June 3, I want to throw her a dinosaur-themed party.",
+          "By the way, we switched our main database from PostgreSQL to MongoDB last sprint."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "What database does my team use now?",
+          "expected_keywords": [["mongodb", "mongo"]],
+          "expected_fact": "The team now uses MongoDB (switched from PostgreSQL)."
+        },
+        {
+          "question": "What is my daughter's name and when is her birthday?",
+          "expected_keywords": [["ava"], ["june"]],
+          "expected_fact": "The user's daughter is Ava; her birthday is June 3."
+        },
+        {
+          "question": "Recommend a dessert for the party that I can also eat.",
+          "expected_keywords": [["dairy-free", "dairy free", "lactose", "vegan", "sorbet", "coconut", "oat", "almond", "without milk", "non-dairy", "plant-based", "fruit"]],
+          "expected_fact": "The user is lactose intolerant, so the dessert must be dairy-free (party is dinosaur themed for a 6-year-old)."
+        }
+      ]
+    },
+    {
+      "user_id": "eval_amara",
+      "sessions": [
+        [
+          "Hi, I'm Amara, a PhD student in Nairobi studying marine biology.",
+          "My thesis is about coral reef restoration and it's due in August."
+        ],
+        [
+          "I'm a vegan and I love Ethiopian food.",
+          "I commute by bike and I listen to jazz while I write."
+        ]
+      ],
+      "questions": [
+        {
+          "question": "What is my thesis about and when is it due?",
+          "expected_keywords": [["coral"], ["august"]],
+          "expected_fact": "The thesis is about coral reef restoration and is due in August."
+        },
+        {
+          "question": "Suggest a quick lunch for me.",
+          "expected_keywords": [["vegan", "plant-based", "tofu", "lentil", "chickpea", "beans", "injera", "veg"]],
+          "expected_fact": "The user is vegan (and likes Ethiopian food)."
+        },
+        {
+          "question": "What kind of music do I like while working?",
+          "expected_keywords": [["jazz"]],
+          "expected_fact": "The user listens to jazz while writing."
+        }
+      ]
+    }
+  ]
+}

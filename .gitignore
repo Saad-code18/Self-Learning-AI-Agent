@@ -1,0 +1,19 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# data created at runtime (memories live in Qdrant's docker volume)
+data/*.db
+data/*.db-journal
+data/benchmark_results.json
+qdrant_storage/
+
+# editors / OS
+.idea/
+.DS_Store

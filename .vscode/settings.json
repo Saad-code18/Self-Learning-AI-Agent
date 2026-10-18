@@ -1,0 +1,14 @@
+{
+  // Tell VS Code where the package lives so imports resolve and "Go to definition" works.
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "[python]": {
+    "editor.formatOnSave": false
+  }
+}

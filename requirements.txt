@@ -1,0 +1,12 @@
+# Exact versions that were tested together (September 2026).
+# Pinning avoids "it worked yesterday" surprises; upgrade deliberately.
+
+mem0ai==2.2.1           # the memory layer (extraction helpers, history, vector-store adapters)
+qdrant-client==1.19.1   # talks to the Qdrant vector database
+openai==3.20.0          # OpenAI SDK; also used for Ollama's OpenAI-compatible endpoint
+ollama==0.6.2           # only needed when LLM_PROVIDER / EMBEDDER_PROVIDER = ollama
+python-dotenv==1.2.2    # loads the .env file
+fastapi==0.141.1        # HTTP API (src/memory_agent/api.py)
+uvicorn==0.54.0         # ASGI server that runs FastAPI
+httpx==0.28.1           # HTTP client (FastAPI TestClient + qdrant-client use it)
+pytest==9.1.1           # tests

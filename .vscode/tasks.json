@@ -1,0 +1,43 @@
+{
+  // Terminal -> Run Task... (or Ctrl/Cmd+Shift+P -> "Tasks: Run Task")
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1. Start Qdrant (docker compose up -d)",
+      "type": "shell",
+      "command": "docker compose up -d qdrant",
+      "problemMatcher": []
+    },
+    {
+      "label": "2. Install Python requirements",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pip install -r requirements.txt",
+      "problemMatcher": []
+    },
+    {
+      "label": "3. Check setup",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} scripts/check_setup.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pytest -v",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start full stack in Docker (Qdrant + API)",
+      "type": "shell",
+      "command": "docker compose --profile app up --build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Docker services",
+      "type": "shell",
+      "command": "docker compose --profile app --profile local down",
+      "problemMatcher": []
+    }
+  ]
+}
